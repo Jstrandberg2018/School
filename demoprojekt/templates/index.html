@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<a href="{{ url_for('add_user') }}">Lägg till ny användare</a>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Namn</th>
+        <th>Lösenord</th>
+        <th>Åtgärder</th>
+    </tr>
+    {% for user in users %}
+    <tr>
+        <td>{{ user.id }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.password }}</td>
+        <td>
+            <a href="{{ url_for('edit_user', id=user.id) }}">Redigera</a> |
+            <a href="{{ url_for('delete_user', id=user.id) }}">Ta bort</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<a href='/logout'>Logga ut</a>
+{% endblock %}

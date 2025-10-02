@@ -1,0 +1,16 @@
+body {
+    background-color: palegoldenrod;
+    color:mediumslateblue;
+}
+
+
+@media print {
+    body {
+        font-size: 12px;
+        background-color: white;
+        color:black;   
+    }
+    img {
+        display: none;
+    }
+}

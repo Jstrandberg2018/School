@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Väder app</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+</html>
+
+<input type="text" id="latInput" placeholder="Latitude (e.g. 59.3293)">
+<input type="text" id="lonInput" placeholder="Longitude (e.g. 18.0686)">
+    
+<label for="lang">Språk:</label>
+<select name="lang" id="lang">
+    <option value="sv">Svenska</option>
+    <option value="en">English</option>
+    <option value="nl">Nederlands</option>
+    <option value="de">Deutsch</option>
+</select>
+
+<button onclick="fetchWeather()">Get Weather</button>
+<div id="weatherInfo"></div>
+
+<script src="weather.js"></script>

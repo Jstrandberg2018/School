@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<h2>Redigera användare</h2>
+<form method="post">
+    {{ form.hidden_tag() }}
+    <p>{{ form.username.label }} {{ form.username(size=32) }}</p>
+    <p>{{ form.password.label }} {{ form.password(size=32) }}</p>
+    <p>{{ form.admin() }} {{ form.admin.label }}</p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock %}

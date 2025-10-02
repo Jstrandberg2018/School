@@ -1,0 +1,151 @@
+/*- reset - */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    text-decoration: none;
+}
+
+/* ------------------ */
+
+.hamburger-menu summary{
+    font-size: 30px;
+    cursor: pointer;
+    list-style-type: none;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-direction-row {
+    flex-direction: row;
+}
+
+.medium-gap {
+    gap: 15px;
+}
+
+.justify-conent-evenly-space {
+    justify-content: space-evenly;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.startpage nav ul li {
+    list-style-type: none;
+    border-radius: 10px;
+    border: 1px solid rgb(194, 194, 194);
+
+    flex: auto;
+    box-shadow: inset -2px -2px 8px rgb(0, 0, 0);
+    padding: 15px;
+    text-align: center;
+}
+
+.startpage nav ul li:hover{
+    border: 1px solid rgb(0, 0, 0);
+    box-shadow: inset 2px 2px 8px rgb(0, 0, 0)
+}
+
+.startpage nav ul li {
+    list-style-type: none;
+}
+
+.list-style-none {
+    list-style: none;
+}
+
+.startpage {
+    margin-top: 1em;
+    padding: 1em;
+}
+
+/*.startpage a {
+    padding: 1em;
+    color:black;
+    background-color: antiquewhite;
+}*/
+
+.startpage a:hover {
+    text-decoration: underline;
+    color:blue;
+    font-weight: bold;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+}
+
+h1 { font-size: 100px; }
+h2 { font-size: 80px; }
+h3 { font-size: 60px; }
+
+p {
+    font-size: 30px;
+    color: papayawhip;
+    background-color: seagreen;
+}
+
+.hamburger-menu nav {
+    overflow: hidden;
+    max-height: 10px;
+    transition: max-height 1s ease-in-out;
+}
+
+.hamburger-menu[open] nav {
+    max-height: 100px;
+}
+
+.toggle {
+    clip: rect(0, 0, 0, 0);
+    margin-left: -999999px;
+}
+
+.button {
+    position: relative;
+    display: block;
+    cursor: pointer;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    transform: scaleY(1.5) rotateZ(-90deg);
+    transition: transform 0.3s ease-in-out;
+}
+
+.hamburger-menu-radio .menu {
+    overflow: hidden;
+    transform-origin: top;
+    transform: translateY(-170px);
+    transition: transform 0.3s ease-in-out, max-height 0.3s ease-in-out;
+}
+
+.hamburger-menu-radio .toggle:checked ~ .menu {
+    transform: translateY(0px);
+}
+
+nav {
+    max-height: 0px;
+    transition: max-height 1s ease-in-out;
+}
+
+.hamburger-menu-radio .toggle:checked ~ nav {
+    max-height: 400px;
+}
+
+.hamburger-menu-radio .toggle:checked ~ .button {
+    transform: scaleX(1.5) rotateZ(360deg);
+}
