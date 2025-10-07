@@ -1,0 +1,100 @@
+/* assets/style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f0fa; /* Ljuslila bakgrund */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #5e4b8b; /* Mörkare lila för text */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1c4e9; /* Ljuslila kant */
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+input[type="submit"] {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background-color: #b39ddb; /* Ljuslila knapp */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #9575cd; /* Lite mörkare lila vid hover */
+}
+
+input {
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input.valid {
+    border-color: #4CAF50; /* Grön */
+}
+
+input.invalid {
+    border-color: #F44336; /* Röd */
+}
+
+small#passwordStrength {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85em;
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 20px;
+        align-items: flex-start;
+    }
+
+    form {
+        padding: 20px;
+        width: 100%;
+        box-shadow: none;
+        border-radius: 0;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="submit"] {
+        font-size: 16px;
+        padding: 14px;
+    }
+}

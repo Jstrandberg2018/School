@@ -8,25 +8,26 @@
 </head>
 <body>
     <form action="">
-        <label for="name">Förnamn:</label>
-        <input type="text">
+        <label for="firstName">Förnamn:</label>
+        <input type="text" id="firstName" required>
         
-        <label for="name">Efternamn:</label>
-        <input type="text">
+        <label for="lastName">Efternamn:</label>
+        <input type="text" id="lastName" required>
 
         <label for="email">E-post:</label>
-        <input type="email">
+        <input type="email" id="email" required>
         
         <label for="password">Lösenord:</label>
-        <input type="password">
+        <input type="password" id="password" required>
+        <small id="passwordStrength"></small>
 
-        <label for="password">Bekräfta lösenord:</label>
-        <input type="password">
+        <label for="confirmedPassword">Bekräfta lösenord:</label>
+        <input type="password" id="confirmPassword" required>
 
         <label for="age">Ålder:</label>
-        <input type="number">
+        <input type="number" id="age" required>
 
-        <input type="Submit">
+        <input type="Submit" value="Skicka">
     </form>
 
     <script src="scripts/script.js"></script>
