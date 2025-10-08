@@ -1,0 +1,290 @@
+/*Gemensamt mellan sidorna*/
+/* Grundläggande reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body.startpage {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f9ff; /* ljusblå bakgrund */
+    color: #222;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+h1 {
+    color: #ff5c5c; /* stark tuschröd */
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+h2 {
+    color: #00897b; /* pigg turkos */
+    margin-bottom: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+nav ul li a {
+    color: #444;
+    background-color: #e0f7fa;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: #b2ebf2;
+    color: #006064;
+}
+
+p {
+    max-width: 600px;
+    font-size: 1.1rem;
+}
+
+.text-vänster{
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: auto;
+}
+
+img:not(.loga) {
+    max-width: 300px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*Index sidan*/
+.loga {
+    max-height: 50%;
+    height: auto;
+    width: auto;
+}
+
+/*Kontakt sidan*/
+.form-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Gör att label och input/textarea tar hela bredden och hamnar under varandra */
+label, input, textarea, button {
+    display: block;
+    width: 100%;
+    box-sizing: border-box; /* Viktigt för att padding/border inte ska göra element bredare än 100% */
+}
+
+/* Marginal mellan varje label och input/textarea */
+label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+input, textarea {
+    padding: 8px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Behåll resize-vertikal på textarea */
+textarea {
+    resize: vertical;
+}
+
+/* Lite luft över knappen */
+button {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #007bff; /* blå knapp */
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #d4edda;
+  color: #155724;
+  border: 2px solid #c3e6cb;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.25);
+  z-index: 1000;
+  min-width: 300px;
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+#popupMessage button {
+  margin-top: 15px;
+  padding: 6px 12px;
+  background-color: #155724;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#popupMessage button:hover {
+  background-color: #0b3d15;
+}
+
+/*Produkt sidan*/
+/* Produktsektioner */
+.product-category {
+    margin-bottom: 60px;
+}
+
+.product-category h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #00897b;
+}
+
+/* Produktkort */
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.product-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    flex: 1 1 calc(50% - 25px);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    border-radius: 8px;
+    max-height: 150px;
+    object-fit: contain;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.product-card h3 {
+    font-size: 1.2rem;
+    color: #00796b;
+    margin-bottom: 8px;
+}
+
+.product-card p {
+    font-size: 0.95rem;
+    color: #444;
+}
+
+.price {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #d32f2f;
+}
+
+/*Om oss sidan*/
+.fun-fact {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+    padding: 15px 20px;
+    margin-top: 40px;
+    font-style: italic;
+    max-width: 600px;
+}
+
+.owner-img {
+    max-width: 300px;
+    border-radius: 10px;
+    margin: 20px 0;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/*Responsivitet*/
+@media (max-width: 600px) {
+    /* Text och bild under varandra */
+    .text-vänster {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .text-vänster img {
+        max-width: 100%;
+        height: auto;
+        margin: 10px 0;
+    }
+
+    /* Navigation vertikal, centrerad med mellanrum */
+    nav ul {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center; /* centrerar knapparna horisontellt */
+        padding-left: 0; /* ta bort eventuell default padding */
+    }
+    nav ul li a {
+        padding: 12px 25px; /* lite bredare klickyta */
+        font-size: 1.1rem;
+        text-align: center;
+        display: inline-block;
+    }
+
+    /* Produkter i en kolumn */
+    .products {
+        flex-direction: column;
+    }
+
+    /* Formulär maxbredd och padding */
+    .formContainer {
+        width: 95%;
+        padding: 15px;
+        margin: 30px auto;
+    }
+}

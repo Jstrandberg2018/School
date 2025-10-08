@@ -1,0 +1,98 @@
+<html>
+<head>
+    <title>Tärningsspel</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<a href="../index.html">Tillbaka</a>
+
+<body>
+    <div class="container">
+        <!-- Huvudrubrik -->
+        <h1>🎲 Tärningsspel 🎲</h1>
+        
+        <!-- Spelregler -->
+        <div class="instructions">
+            <h2>Spelregler:</h2>
+            <p>1. Klicka för att kasta tärningen</p>
+            <p>2. Få en sexa för att vinna! 🏆</p>
+        </div>
+
+        <!-- Spelknapp -->
+        <button onclick="kastaTarning()" class="play-button">KASTA TÄRNING</button>
+
+        <!-- Visar spelresultat och statistik -->
+        <div class="game-status">
+            <p id="resultat">Tryck för att börja spela!</p>
+            <p id="stats">Antal försök: 0</p>
+        </div>
+    </div>
+    
+    <script>
+        // Globala variabler för att hålla koll på spelstatus
+        let forsok = 0;              // Räknar antal försök
+        let tarningRullar = false;   // Förhindrar flera kast samtidigt
+
+        // Huvudfunktion som körs när spelaren klickar på knappen
+        function kastaTarning() {
+            // Stoppa om tärningen redan rullar
+            if (tarningRullar) return;
+
+            // Hantera "Spela igen" efter vinst
+            if (document.querySelector(".play-button").innerHTML === "SPELA IGEN?") {
+                aterstallSpel();
+                return;
+            }
+
+            // Starta nytt kast
+            startaKast();
+            
+            // Vänta 1 sekund och visa resultat
+            setTimeout(visaResultat, 1000);
+        }
+
+        // Återställer spelet till ursprungsläge
+        function aterstallSpel() {
+            forsok = 0;
+            document.querySelector(".play-button").innerHTML = "KASTA TÄRNING";
+            document.getElementById("resultat").innerHTML = "Tryck för att börja spela!";
+            document.getElementById("stats").innerText = "Antal försök: 0";
+        }
+
+        // Förbereder för ett nytt kast
+        function startaKast() {
+            tarningRullar = true;
+            forsok++;
+            
+            const knapp = document.querySelector(".play-button");
+            knapp.disabled = true;
+            
+            uppdateraText("stats", `Antal försök: ${forsok}`);
+            uppdateraText("resultat", "<span class='rolling'>🎲 Kastar...</span>");
+        }
+
+        // Visar resultatet av kastet
+        function visaResultat() {
+            const tarning = Math.floor(Math.random() * 6) + 1;
+            const vinst = tarning === 6;
+            
+            // Visa vinst eller förlust meddelande
+            uppdateraText("resultat", vinst 
+                ? `<span class='win'>Grattis! Sexa på försök ${forsok}! 🎉</span>`
+                : `<span class='lose'>Du fick ${tarning}. Försök igen!</span>`
+            );
+            
+            // Återställ knappen
+            const knapp = document.querySelector(".play-button");
+            knapp.innerHTML = vinst ? "SPELA IGEN?" : "KASTA TÄRNING";
+            knapp.disabled = false;
+            tarningRullar = false;
+        }
+
+        // Hjälpfunktion för att uppdatera text
+        function uppdateraText(id, text) {
+            document.getElementById(id).innerHTML = text;
+        }
+    </script>
+</body>
+</html>
