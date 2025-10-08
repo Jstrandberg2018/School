@@ -2,7 +2,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background-color: #f5f0fa; /* Ljuslila bakgrund */
+    background-color: #f5f0fa; 
     margin: 0;
     padding: 0;
     display: flex;
@@ -75,6 +75,17 @@ small#passwordStrength {
     margin-top: 5px;
     font-size: 0.85em;
 }
+
+.hidden {
+    display: none;
+}
+
+#formStatus {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #5e4b8b;
+}
+
 
 @media (max-width: 768px) {
     body {

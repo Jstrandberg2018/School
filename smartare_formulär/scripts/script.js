@@ -92,4 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             alert("Formuläret innehåller felaktiga uppgifter. Kontrollera alla fält.");
         }
     });
+
+    window.validateField = validateField;
+    window.fields = fields;
 });
