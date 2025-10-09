@@ -1,6 +1,4 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.querySelector("form");
-
     const fields = {
         firstName: document.getElementById("firstName"),
         lastName: document.getElementById("lastName"),
@@ -11,10 +9,12 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     const passwordStrengthText = document.getElementById("passwordStrength");
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-    // Lyssnare för realtidsvalidering
+    function getErrorMessageElem(input) {
+        return input.parentElement.querySelector(".error-message");
+    }
+
     for (let key in fields) {
         fields[key].addEventListener("input", () => validateField(key));
     }
@@ -23,29 +23,42 @@ document.addEventListener("DOMContentLoaded", function () {
         const input = fields[field];
         const value = input.value.trim();
         let isValid = false;
+        let errorMessage = "";
 
         switch (field) {
             case "firstName":
+                isValid = value.length >= 2;
+                if (!isValid) errorMessage = "Förnamn måste vara minst 2 tecken.";
+                break;
             case "lastName":
                 isValid = value.length >= 2;
+                if (!isValid) errorMessage = "Efternamn måste vara minst 2 tecken.";
                 break;
             case "email":
                 isValid = emailRegex.test(value);
+                if (!isValid) errorMessage = "Ogiltig e-postadress.";
                 break;
             case "password":
                 isValid = value.length >= 6;
+                if (!isValid) errorMessage = "Lösenord måste vara minst 6 tecken.";
                 updatePasswordStrength(value);
                 break;
             case "confirmPassword":
                 isValid = value === fields["password"].value && value !== "";
+                if (!isValid) errorMessage = "Lösenorden matchar inte.";
                 break;
             case "age":
                 const ageNum = parseInt(value);
                 isValid = !isNaN(ageNum) && ageNum >= 18 && ageNum <= 100;
+                if (!isValid) errorMessage = "Åldern måste vara mellan 18 och 100.";
                 break;
         }
 
-        // Visuell feedback
+        const errorElem = getErrorMessageElem(input);
+        if (errorElem) {
+            errorElem.textContent = isValid ? "" : errorMessage;
+        }
+
         input.classList.toggle("valid", isValid);
         input.classList.toggle("invalid", !isValid);
 
@@ -75,23 +88,6 @@ document.addEventListener("DOMContentLoaded", function () {
         passwordStrengthText.textContent = `Lösenordsstyrka: ${strength}`;
         passwordStrengthText.style.color = color;
     }
-
-    // Förhindra inlämning om något är fel
-    form.addEventListener("submit", function (e) {
-        let allValid = true;
-
-        for (let key in fields) {
-            const valid = validateField(key); // kör validering igen
-            if (!valid) {
-                allValid = false;
-            }
-        }
-
-        if (!allValid) {
-            e.preventDefault(); // Stoppa inlämning
-            alert("Formuläret innehåller felaktiga uppgifter. Kontrollera alla fält.");
-        }
-    });
 
     window.validateField = validateField;
     window.fields = fields;

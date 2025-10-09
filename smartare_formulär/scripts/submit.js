@@ -3,9 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const statusText = document.getElementById("formStatus");
 
     form.addEventListener("submit", async function (e) {
-        e.preventDefault(); // 🛑 Stoppa sidomladdning
+        e.preventDefault();
 
-        // ✅ Kör validering manuellt för alla fält
         let allValid = true;
         for (let key in window.fields) {
             const valid = window.validateField(key);
@@ -15,43 +14,46 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!allValid) {
-            statusText.textContent = "Formuläret innehåller felaktiga fält. Kontrollera och försök igen.";
+            statusText.textContent = "Formuläret innehåller felaktiga fält. Kontrollera felen nedan.";
             statusText.classList.remove("hidden");
             statusText.style.color = "red";
+
+            // Scrolla till första ogiltiga input
+            const firstInvalid = Object.values(window.fields).find(input => input.classList.contains("invalid"));
+            if (firstInvalid) {
+                firstInvalid.focus();
+                firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+
             return;
         }
 
-        // 📤 Visa "Skickar..."
         statusText.textContent = "Skickar...";
         statusText.classList.remove("hidden");
         statusText.style.color = "#5e4b8b";
 
-        // 🔄 Förbered data
         const formData = new FormData(form);
 
         try {
-            // 💡 Fejka väntetid med setTimeout + Promise
             await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            // 💡 Fejkat svar (du kan sätta "throw" här om du vill testa fel)
-            const success = true; // ändra till false för att testa fel
+            const success = false; // Ändra till true för att simulera lyckad submission
 
             if (!success) {
                 throw new Error("Något gick fel vid fiktiv inlämning.");
             }
 
-            // ✅ Lyckat "svar"
             statusText.textContent = "Formuläret skickades! (Simulerat)";
             statusText.style.color = "green";
             form.reset();
 
-            // Rensa valideringsklasser
             Object.values(window.fields).forEach(input => {
                 input.classList.remove("valid", "invalid");
+                const errElem = input.parentElement.querySelector(".error-message");
+                if (errElem) errElem.textContent = "";
             });
 
         } catch (error) {
-            // ❌ Simulerat fel
             statusText.textContent = `Fel vid skickande: ${error.message}. Försök igen.`;
             statusText.style.color = "red";
         }
