@@ -10,32 +10,33 @@
     <form action="">
         <label for="firstName">Förnamn:</label>
         <input type="text" id="firstName" required>
-        <span class="error-message"></span>
+        <span class="error-message" id="error-firstName"></span>
 
         <label for="lastName">Efternamn:</label>
         <input type="text" id="lastName" required>
-        <span class="error-message"></span>
+        <span class="error-message" id="error-lastName"></span>
 
         <label for="email">E-post:</label>
         <input type="email" id="email" required>
-        <span class="error-message"></span>
+        <span class="error-message" id="error-email"></span>
 
         <label for="password">Lösenord:</label>
         <input type="password" id="password" required>
         <small id="passwordStrength"></small>
-        <span class="error-message"></span>
+        <span class="error-message" id="error-password"></span>
 
         <label for="confirmPassword">Bekräfta lösenord:</label>
         <input type="password" id="confirmPassword" required>
-        <span class="error-message"></span>
+        <span class="error-message" id="error-confirmPassword"></span>
 
         <label for="age">Ålder:</label>
         <input type="number" id="age" required>
-        <span class="error-message"></span>
+        <span class="error-message" id="error-age"></span>
 
         <input type="submit" value="Skicka">
 
         <p id="formStatus" class="hidden"></p>
+        <div id="allErrors" class="error-summary hidden"></div>
     </form>
 
 

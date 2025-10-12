@@ -14,19 +14,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         if (!allValid) {
-            statusText.textContent = "Formuläret innehåller felaktiga fält. Kontrollera felen nedan.";
-            statusText.classList.remove("hidden");
-            statusText.style.color = "red";
+    const errorContainer = document.getElementById("allErrors");
+    errorContainer.innerHTML = ""; // Rensa gamla fel
+    errorContainer.classList.remove("hidden");
 
-            // Scrolla till första ogiltiga input
-            const firstInvalid = Object.values(window.fields).find(input => input.classList.contains("invalid"));
-            if (firstInvalid) {
-                firstInvalid.focus();
-                firstInvalid.scrollIntoView({ behavior: "smooth", block: "center" });
-            }
+    const errors = [];
 
-            return;
+    for (let key in window.fields) {
+        const input = window.fields[key];
+        const errorElem = document.getElementById("error-" + input.id);
+        if (errorElem && errorElem.textContent) {
+            errors.push(`<li>${errorElem.textContent}</li>`);
         }
+    }
+
+    if (errors.length > 0) {
+        errorContainer.innerHTML = `<ul>${errors.join("")}</ul>`;
+    }
+
+    statusText.textContent = "Formuläret innehåller fel. Se nedan.";
+    statusText.classList.remove("hidden");
+    statusText.style.color = "red";
+
+    // Scrolla ner till felmeddelandena
+    errorContainer.scrollIntoView({ behavior: "smooth", block: "center" });
+
+    return;
+}
 
         statusText.textContent = "Skickar...";
         statusText.classList.remove("hidden");
@@ -37,7 +51,10 @@ document.addEventListener("DOMContentLoaded", function () {
         try {
             await new Promise((resolve) => setTimeout(resolve, 2000));
 
-            const success = false; // Ändra till true för att simulera lyckad submission
+            const success = true; // Ändra till true för att simulera lyckad submission
+
+            document.getElementById("allErrors").classList.add("hidden");
+            document.getElementById("allErrors").innerHTML = "";
 
             if (!success) {
                 throw new Error("Något gick fel vid fiktiv inlämning.");

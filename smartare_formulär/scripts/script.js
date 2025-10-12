@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     function getErrorMessageElem(input) {
-        return input.parentElement.querySelector(".error-message");
+        return document.getElementById("error-" + input.id);
     }
 
     for (let key in fields) {

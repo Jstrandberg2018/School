@@ -1,111 +1,132 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Arial, sans-serif; 
     background-color: #f5f0fa; 
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    display: flex; /* Flexbox används för att centrera innehållet */
+    justify-content: center; 
+    align-items: center; 
+    min-height: 100vh; /* Sidan är minst lika hög som viewporten */
+    height: auto;
+    overflow-x: hidden; /* Förhindra horisontell scroll */
 }
 
 form {
-    background-color: #ffffff;
-    padding: 30px 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff; 
+    padding: 30px 40px; /* Inre marginal */
+    border-radius: 10px; /* Rundade hörn */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Lätt skugga för djup */
     width: 100%;
-    max-width: 400px;
+    max-width: 400px; /* Maxbredd så den inte blir för stor på stora skärmar */
 }
 
+/* Stil för alla etiketter */
 label {
     display: block;
     margin-bottom: 6px;
     margin-top: 15px;
     font-weight: bold;
-    color: #5e4b8b; /* Mörkare lila för text */
+    color: #5e4b8b; 
 }
 
+/* Stil för alla inmatningsfält av olika typer */
 input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"] {
-    width: 100%;
+    width: 100%; /* Fyll hela formulärets bredd */
     padding: 10px;
-    border: 1px solid #d1c4e9; /* Ljuslila kant */
+    border: 1px solid #d1c4e9; 
     border-radius: 5px;
     box-sizing: border-box;
     font-size: 14px;
 }
 
+/* Stil för submit-knappen */
 input[type="submit"] {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
-    background-color: #b39ddb; /* Ljuslila knapp */
+    background-color: #b39ddb; 
     color: white;
     border: none;
     border-radius: 5px;
     font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+    cursor: pointer; /* Visar handpekare vid hover */
+    transition: background-color 0.3s ease; /* Mjuk övergång vid hover */
 }
 
+/* Hovereffekt för submit-knappen */
 input[type="submit"]:hover {
-    background-color: #9575cd; /* Lite mörkare lila vid hover */
+    background-color: #9575cd; 
 }
 
+/* Allmän input-stil med övergång på kantfärg */
 input {
-    border: 1px solid #ccc;
-    transition: border-color 0.3s ease;
+    border: 1px solid #ccc; /* Standardkant om inget annat anges */
+    transition: border-color 0.3s ease; /* Mjuk övergång för validering */
 }
 
+/* Grön kant om input är giltigt */
 input.valid {
-    border-color: #4CAF50; /* Grön */
+    border-color: #4CAF50;
 }
 
+/* Röd kant om input är ogiltigt */
 input.invalid {
-    border-color: #F44336; /* Röd */
+    border-color: #F44336;
 }
 
+/* Meddelande om lösenordets styrka */
 small#passwordStrength {
     display: block;
     margin-top: 5px;
     font-size: 0.85em;
 }
 
+/* Klass för att gömma element */
 .hidden {
     display: none;
 }
 
+/* Meddelande som visas efter formuläret har skickats */
 #formStatus {
     margin-top: 15px;
     font-weight: bold;
     color: #5e4b8b;
 }
 
+/* Felmeddelande direkt under fält */
 .error-message {
-  color: red;
-  font-size: 0.9em;
-  margin-top: 3px;
-  display: block;
-  height: 1em;
+    color: red;
+    font-size: 0.9em;
+    margin-top: 3px;
+    display: block;
+    height: 1em; /* Fixerad höjd för att förhindra att layout hoppar */
 }
 
+/* Summering av alla fel högst upp eller längst ner */
+#error-summary,
+.error-summary {
+    margin-top: 15px;
+    color: red;
+    font-size: 0.9em;
+}
 
 @media (max-width: 768px) {
     body {
-        padding: 20px;
-        align-items: flex-start;
+        padding: 20px; /* Extra padding för små skärmar */
+        align-items: flex-start; /* Flytta formuläret högre upp */
     }
 
     form {
         padding: 20px;
         width: 100%;
-        box-shadow: none;
-        border-radius: 0;
+        box-shadow: none; /* Ta bort skugga för enklare utseende */
+        border-radius: 0; /* Inga rundade hörn */
     }
 
+    /* Större text och padding på inputs och knapp för touchvänlighet */
     input[type="text"],
     input[type="email"],
     input[type="password"],
