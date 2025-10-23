@@ -47,7 +47,7 @@ input[type="submit"] {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
-    background-color: #b39ddb; 
+    background-color: #7E57C2; 
     color: white;
     border: none;
     border-radius: 5px;
@@ -58,7 +58,7 @@ input[type="submit"] {
 
 /* Hovereffekt för submit-knappen */
 input[type="submit"]:hover {
-    background-color: #9575cd; 
+    background-color: #5E35B1; 
 }
 
 /* Allmän input-stil med övergång på kantfärg */
